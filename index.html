@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Fuel — Grow with Content</title>
+  <meta name="description" content="Creators-first portfolio & services: content writing, photo editing, thumbnail design, social media growth, branding." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b12;/* deep ink */
+      --card:#11111a;/* dark card */
+      --muted:#b4b6c2;
+      --brand:#7c5cff;/* creator purple */
+      --brand-2:#00e8c6;/* aqua pop */
+      --text:#f3f4f7;
+      --accent:#ff7a00;/* warm accent */
+      --glow:0 0 40px rgba(124,92,255,.35);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden}
+
+    /* ============ Navbar ============ */
+    header{position:sticky; top:0; z-index:1000; backdrop-filter:saturate(180%) blur(12px); background:rgba(11,11,18,.55); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 18px}
+    .logo{font-weight:700; letter-spacing:.5px; display:flex; align-items:center; gap:10px}
+    .logo-dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 12px rgba(124,92,255,.7)}
+    nav ul{list-style:none; display:flex; gap:18px; flex-wrap:wrap}
+    nav a{color:var(--muted); text-decoration:none; font-weight:500; font-size:14px; padding:8px 12px; border-radius:10px; transition:all .25s}
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+
+    /* ============ Hero ============ */
+    .hero{position:relative; min-height:86vh; display:grid; place-items:center; text-align:center; overflow:hidden}
+    /* animated gradient background */
+    .hero::before{content:""; position:absolute; inset:-20%; background:radial-gradient(60% 40% at 20% 20%, rgba(124,92,255,.35) 0%, transparent 60%),
+      radial-gradient(50% 40% at 80% 30%, rgba(0,232,198,.25) 0%, transparent 60%),
+      radial-gradient(60% 50% at 50% 75%, rgba(255,122,0,.2) 0%, transparent 65%);
+      filter:blur(40px); animation:bgFloat 14s ease-in-out infinite alternate}
+    @keyframes bgFloat{0%{transform:translateY(-10px) scale(1)}100%{transform:translateY(10px) scale(1.05)}}
+
+    .hero-inner{position:relative; padding:70px 18px 30px; max-width:980px}
+    .headline{font-size:clamp(32px,6vw,60px); font-weight:700; line-height:1.05; letter-spacing:.3px}
+    .sub{margin:14px auto 28px; color:#cfd1dc; max-width:760px}
+
+    .cta-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; text-decoration:none; padding:12px 18px; border-radius:16px; font-weight:600; border:1px solid rgba(255,255,255,.12); transition:all .25s; will-change:transform,box-shadow}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0b12; box-shadow:var(--glow)}
+    .btn.primary:hover{transform:translateY(-2px)}
+    .btn.ghost{color:var(--text); background:rgba(255,255,255,.06)}
+    .btn.ghost:hover{background:rgba(255,255,255,.12)}
+
+    /* floating shapes */
+    .shape{position:absolute; border-radius:24px; filter:blur(1px); opacity:.7; animation:float 9s ease-in-out infinite}
+    .shape.s1{width:70px;height:70px; left:6%; top:18%; background:linear-gradient(135deg,var(--brand),#a993ff)}
+    .shape.s2{width:110px;height:110px; right:8%; top:24%; background:linear-gradient(135deg,var(--brand-2),#73ffe7); animation-delay:1.2s}
+    .shape.s3{width:80px;height:80px; right:12%; bottom:12%; background:linear-gradient(135deg,#ffb45e,var(--accent)); animation-delay:.6s}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-16px)}100%{transform:translateY(0)}}
+
+    /* ============ About ============ */
+    section{padding:72px 18px}
+    .container{max-width:1100px; margin:0 auto}
+    .section-title{font-size:clamp(26px,4.2vw,40px); margin-bottom:14px}
+    .muted{color:var(--muted)}
+    .about{display:grid; gap:22px; grid-template-columns:1.2fr .8fr; align-items:center}
+    .about-card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:22px}
+    .about-img{aspect-ratio:16/10; border-radius:20px; background:url('https://images.unsplash.com/photo-1516280030429-27679b3dc9cf?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; box-shadow:0 20px 60px rgba(0,0,0,.45)}
+
+    /* ============ Services ============ */
+    #services{background:linear-gradient(180deg,rgba(124,92,255,.08),transparent)}
+    .grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; cursor:pointer; transition:transform .2s ease, box-shadow .2s ease; position:relative; overflow:hidden}
+    .card:hover{transform:translateY(-6px); box-shadow:0 14px 40px rgba(0,0,0,.25)}
+    .card .badge{position:absolute; right:12px; top:12px; font-size:12px; padding:5px 9px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1)}
+    .card h3{font-size:18px; margin-bottom:6px}
+    .card p{font-size:14px; color:#cfd1dc}
+
+    /* service detail popup */
+    .detail{margin-top:22px; background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; display:none}
+    .detail.active{display:block; animation:reveal .35s ease}
+    @keyframes reveal{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
+
+    /* ============ Add-ons (FREEBIES) ============ */
+    .addons{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .addon{background:linear-gradient(135deg,rgba(124,92,255,.14),rgba(0,232,198,.12)); border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:16px}
+
+    /* ============ Portfolio ============ */
+    .gallery{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .tile{position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.08)}
+    .tile img{width:100%; height:100%; object-fit:cover; aspect-ratio:4/3; transition:transform .35s ease}
+    .tile:hover img{transform:scale(1.06)}
+    .pill{position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.16); padding:6px 10px; border-radius:999px; font-size:12px}
+
+    /* ============ Contact ============ */
+    .contact{display:grid; gap:18px; grid-template-columns:1fr 1fr}
+    .contact-card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px}
+    .contact a{color:var(--brand-2); text-decoration:none}
+    .contact form{display:grid; gap:12px}
+    .input{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0e0e16; color:var(--text)}
+    .textarea{min-height:120px; resize:vertical}
+
+    /* ============ WhatsApp Floating ============ */
+    .fab{position:fixed; right:16px; bottom:16px; z-index:999; display:inline-flex; align-items:center; gap:8px; padding:12px 14px; border-radius:999px; background:linear-gradient(135deg,var(--brand-2),#26ffb9); color:#041311; font-weight:700; text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.35)}
+
+    /* ============ Reveal on scroll ============ */
+    .reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:translateY(0)}
+
+    /* ============ Footer ============ */
+    footer{padding:40px 18px; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
+
+    /* ============ Responsive ============ */
+    @media (max-width:920px){
+      .about{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav">
+      <div class="logo"><span class="logo-dot"></span> CONTENT FUEL</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#addons">Add‑ons</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
+
+    <div class="hero-inner">
+      <h1 class="headline">Create • Grow • Stand Out</h1>
+      <p class="sub">We help creators & brands with <b>content writing</b>, <b>photo editing</b>, <b>thumbnail design</b>, <b>social media growth</b>, and <b>branding</b>. No hotels/hostels — <i>pure creator energy.</i></p>
+      <div class="cta-row">
+        <a class="btn primary" href="#services">Explore Services</a>
+        <a class="btn ghost" href="#contact">Let’s Collaborate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about">
+      <div class="about-card reveal">
+        <h2 class="section-title">About Us</h2>
+        <p class="muted" style="margin-top:6px">At Content Fuel, we believe creators don’t just make content—they build culture. Whether you're a filmmaker, designer, writer, or digital rebel, your voice deserves to be seen, heard, and remembered.
+
+          We blend storytelling, design, and data to make your content impossible to ignore.
+From scroll-stopping visuals to strategy that actually works, we turn raw creativity into powerful digital presence.
+.</p>
+        <ul style="margin-top:14px; display:grid; gap:8px">
+          <li>✍️ Sharp, engaging copy that converts</li>
+          <li>🎨 Visuals that grab attention in 1 second</li>
+          <li>📈 Growth playbooks tailored to your niche</li>
+        </ul>
+      </div>
+      <div class="about-img reveal" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="muted" style="margin-bottom:14px">Click any service to see details.</p>
+      <div class="grid">
+        <div class="card reveal" data-service="writing">
+          <span class="badge">✍️ Writing</span>
+          <h3>Content Writing</h3>
+          <p>Captions, blogs, scripts, ad-copy that fit your voice.</p>
+        </div>
+        <div class="card reveal" data-service="photo">
+          <span class="badge">📸 Retouch</span>
+          <h3>Photo Editing</h3>
+          <p>Color grading, retouching, mood-boards, preset packs.</p>
+        </div>
+        <div class="card reveal" data-service="thumbs">
+          <span class="badge">🎯 CTR</span>
+          <h3>Thumbnail Making</h3>
+          <p>High-CTR YouTube/Shorts thumbnails that pop.</p>
+        </div>
+        <div class="card reveal" data-service="social">
+          <span class="badge">🚀 Growth</span>
+          <h3>Social Media Growth</h3>
+          <p>Calendar, hashtags, hooks, analytics & optimization.</p>
+        </div>
+        <div class="card reveal" data-service="design">
+          <span class="badge">🖼️ Brand</span>
+          <h3>Graphic Design</h3>
+          <p>Posts, carousels, posters, brand kits & templates.</p>
+        </div>
+        <div class="card reveal" data-service="branding">
+          <span class="badge">🧭 Strategy</span>
+          <h3>Branding & Strategy</h3>
+          <p>Positioning, tone, visual identity & content pillars.</p>
+        </div>
+      </div>
+      <div id="service-detail" class="detail" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- Add-ons / Freebies -->
+  <section id="addons">
+    <div class="container">
+      <h2 class="section-title">Creator Add‑ons (included)</h2>
+      <p class="muted" style="margin-bottom:14px">5 extras to level-up your content without extra cost.</p>
+      <div class="addons">
+        <div class="addon reveal">✅ <b>Account Audit</b> — profile, grid & bio suggestions.</div>
+        <div class="addon reveal">✅ <b>30‑Day Content Calendar</b> — hooks & posting plan.</div>
+        <div class="addon reveal">✅ <b>Hashtag & Keyword Pack</b> — niche-targeted reach.</div>
+        <div class="addon reveal">✅ <b>SEO Basics</b> — titles, descriptions, alt‑text cheat‑sheet.</div>
+        <div class="addon reveal">✅ <b>Brand Voice Guide</b> — tone, phrases, do’s & don’ts.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Portfolio</h2>
+      <p class="muted" style="margin-bottom:14px">A quick look at our vibe. Replace these with your own work.</p>
+      <div class="gallery">
+        <figure class="tile reveal">
+          <img alt="Color graded portrait" src="https://wallpaperaccess.com/full/38584.jpg" />
+          <figcaption class="pill">Photo Edit</figcaption>
+        </figure>
+        <figure class="tile reveal">
+          <img alt="Bold thumbnail design" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/dfda35173330847.648e9fb76cbbb.jpg" />
+          <figcaption class="pill">Thumbnail</figcaption>
+        </figure>
+        <figure class="tile reveal">
+          <img alt="Minimal brand kit" src="https://t3.ftcdn.net/jpg/15/52/63/36/240_F_1552633674_AJyVYOhM5cv83NxPmTVZbdGXrK9sDd8Q.jpg" />
+          <figcaption class="pill">Brand Kit</figcaption>
+        </figure>
+        <figure class="tile reveal">
+          <img alt="Social carousel design" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6a4cea152280873.631b164626f88.png" />
+          <figcaption class="pill">Carousel</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container contact">
+      <div class="contact-card reveal">
+        <h2 class="section-title">Let’s Collaborate</h2>
+        <p class="muted">Email: <a href="mailto:gavneeshchauhan20@gmail.com">gavneeshchauhan20@gmail.com</a><br>
+          Instagram: <a target="_blank" href="https://instagram.com/gavneeshchauhan_">@gavneeshchauhan_</a></p>
+        <p style="margin-top:8px">Prefer WhatsApp? Use the green button below.</p>
+      </div>
+      <div class="contact-card reveal">
+       
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Creators Hub — All Rights Reserved</div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a class="fab" href="https://wa.me/918920963299?text=Hey%20Creators%20Hub!%20Let's%20work%20together." target="_blank">WhatsApp</a>
+
+  <script>
+    // ==== Service details data ====
+    const SERVICE_COPY = {
+      writing: {
+        title: 'Content Writing',
+        points: [
+          'IG/YouTube captions with hooks & CTAs',
+          'Shorts/YouTube scripts matched to your voice',
+          'Blogs/newsletters optimized for search',
+          'Ad-copy & landing page microcopy'
+        ]
+      },
+      photo: {
+        title: 'Photo Editing',
+        points: [
+          'Pro retouching & color grading',
+          'Consistent aesthetic preset packs',
+          'Before/After storytelling sets',
+          'Export-ready for every platform'
+        ]
+      },
+      thumbs: {
+        title: 'Thumbnail Making',
+        points: [
+          'High-CTR designs (face emphasis, bold text)',
+          'A/B test variants for best performance',
+          'On-brand color & composition rules',
+          'Delivery in 1280×720 & HD'
+        ]
+      },
+      social: {
+        title: 'Social Media Growth',
+        points: [
+          '30‑day calendar with daily hooks',
+          'Hashtags, timing & analytics review',
+          'Content pillars and theme mapping',
+          'Collab strategy & UGC workflows'
+        ]
+      },
+      design: {
+        title: 'Graphic Design',
+        points: [
+          'Carousel posts & posters that pop',
+          'Re-usable Canva/Figma templates',
+          'Logo lockups & typography guide',
+          'Platform‑native sizes & exports'
+        ]
+      },
+      branding: {
+        title: 'Branding & Strategy',
+        points: [
+          'Positioning, audience & voice chart',
+          'Visual identity moodboard',
+          'Offer design & content funnel',
+          'KPI dashboard and review cadence'
+        ]
+      }
+    };
+
+    // ==== Click handler for service cards ====
+    const detailBox = document.getElementById('service-detail');
+    document.querySelectorAll('.card[data-service]').forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.getAttribute('data-service');
+        const data = SERVICE_COPY[key];
+        if(!data) return;
+        const list = data.points.map(p => `<li>• ${p}</li>`).join('');
+        detailBox.innerHTML = `
+          <h3 style="margin-bottom:8px">${data.title}</h3>
+          <ul style="display:grid; gap:6px">${list}</ul>
+        `;
+        detailBox.classList.add('active');
+        detailBox.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    });
+
+    // ==== Reveal on scroll (Intersection Observer) ====
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+    },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ==== Simple form handler (no backend) ====
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (ev)=>{
+      ev.preventDefault();
+      const status = document.getElementById('form-status');
+      status.textContent = 'Thanks! We\'ll reply within 24 hours.';
+      form.reset();
+    });
+
+    // ==== Footer year ====
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
